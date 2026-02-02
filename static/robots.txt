@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+Sitemap: https://auto-vibe-c88e.vercel.app/sitemap.xml
+
+# Googlebot specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bingbot
+User-agent: bingbot
+Allow: /
+Crawl-delay: 2
