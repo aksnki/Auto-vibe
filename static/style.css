@@ -353,3 +353,28 @@ nav a:hover::after {
     z-index: 1;
 }
 
+/* Critical CSS - Load First */
+.logo-font, h1, h2, h3, nav, .hero-overlay {
+    font-display: swap;
+}
+
+/* Lazy Loading */
+img, video {
+    img, video {
+        loading: lazy;
+    }
+}
+
+/* Reduce CLS (Cumulative Layout Shift) */
+img {
+    aspect-ratio: attr(width) / attr(height);
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
