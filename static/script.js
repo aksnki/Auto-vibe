@@ -114,57 +114,31 @@ function initWhyCards() {
     });
 }
 
-function initFAQ() {
+// FAQ Accordion - Works with all designs
+document.addEventListener('DOMContentLoaded', function() {
     const faqQuestions = document.querySelectorAll('.faq-question');
     
     faqQuestions.forEach(question => {
         question.addEventListener('click', function() {
-            // Get the FAQ item and answer
-            const faqItem = this.closest('.faq-item');
             const answer = this.nextElementSibling;
             const icon = this.querySelector('.faq-icon');
             
-            // Check if this FAQ is already active
-            const isActive = faqItem.classList.contains('active');
+            // Toggle current FAQ
+            answer.classList.toggle('hidden');
+            icon.classList.toggle('rotate');
             
-            // Close all other FAQs
-            document.querySelectorAll('.faq-item.active').forEach(activeItem => {
-                if (activeItem !== faqItem) {
-                    activeItem.classList.remove('active');
-                    activeItem.querySelector('.faq-answer').style.maxHeight = '0';
-                    activeItem.querySelector('.faq-answer').style.opacity = '0';
-                    activeItem.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+            // Optional: Close others (uncomment if you want only one open at a time)
+            
+            faqQuestions.forEach(otherQuestion => {
+                if (otherQuestion !== this) {
+                    otherQuestion.nextElementSibling.classList.add('hidden');
+                    otherQuestion.querySelector('.faq-icon').classList.remove('rotate');
                 }
             });
             
-            // Toggle current FAQ
-            if (!isActive) {
-                // Open this FAQ
-                faqItem.classList.add('active');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-                answer.style.opacity = '1';
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                // Close this FAQ
-                faqItem.classList.remove('active');
-                answer.style.maxHeight = '0';
-                answer.style.opacity = '0';
-                icon.style.transform = 'rotate(0deg)';
-            }
         });
-        
-        // Add keyboard support
-        question.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.click();
-            }
-        });
-        
-        // Make FAQ questions focusable
-        question.setAttribute('tabindex', '0');
     });
-}
+});
 
 function initVideoFallback() {
     const video = document.querySelector('video');
