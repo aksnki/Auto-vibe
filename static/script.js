@@ -161,4 +161,26 @@ function initSlideAnimations() {
     slideRightElements.forEach(el => {
         el.classList.add('slide-in-right');
     });
-}
+
+
+// Add to your script.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu Toggle
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.hidden.md\\:flex');
+    
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+});
+}    
+    
