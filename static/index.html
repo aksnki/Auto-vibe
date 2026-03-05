@@ -120,32 +120,57 @@
 </a>
 <body class="bg-black text-white">
     <!-- Navigation -->
-    <nav class="fixed w-full bg-black bg-opacity-98 z-50 shadow-2xl border-b border-red-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-24">
-                <div class="flex items-center space-x-4">
-                    <img src="assets/avlogo.jpeg" alt="AUTO VIBE Car Detailing Logo - Professional Car Detailing Kozhikode" class="h-16 w-16 object-contain"  loading="lazy">
-                    <div>
-                        <button class="mobile-menu-btn">☰</button>
-                        <div class="logo-font text-2xl font-black text-white">AUTO <span class="text-red-600">VIBE</span></div>
-                        <div class="text-xs text-gray-400 tracking-wider">THE DETAILING EXPERTS</div>
-                    </div>
+<nav class="fixed w-full bg-black bg-opacity-98 z-50 shadow-2xl border-b border-red-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-24">
+            <!-- Logo Section - Left -->
+            <div class="flex items-center space-x-4">
+                <img src="assets/avlogo.jpeg" alt="AUTO VIBE Car Detailing Logo" class="h-16 w-16 object-contain" loading="lazy">
+                <div>
+                    <div class="logo-font text-2xl font-black text-white">AUTO <span class="text-red-600">VIBE</span></div>
+                    <div class="text-xs text-gray-400 tracking-wider">THE DETAILING EXPERTS</div>
                 </div>
-                <div class="hidden md:flex space-x-8 logo-font text-sm">
-                   <a href="#home" class="text-white hover:text-red-600 font-semibold">HOME</a>
-                    <a href="#about" class="text-white hover:text-red-600 font-semibold">ABOUT US</a>
-                    <a href="services.html" class="text-white hover:text-red-600 font-semibold">SERVICES</a>
-                    <a href="#packages" class="text-white hover:text-red-600 font-semibold">PACKAGES</a>
-                    <a href="#portfolio" class="text-white hover:text-red-600 font-semibold">PORTFOLIO</a>
-                    <!-- <a href="#faq" class="text-white hover:text-red-600 font-semibold">FAQ</a> -->
-                    <a href="#contact" class="text-white hover:text-red-600 font-semibold">CONTACT</a>
-                </div>
-                <a href="https://wa.me/919074997502" target="_blank" class="bg-red-600 text-white px-6 py-3 rounded-md font-bold logo-font text-sm hover:bg-red-700 transition glow-red">
+            </div>
+            
+            <!-- Navigation Links - Center (Desktop) -->
+            <div class="hidden md:flex items-center space-x-8 logo-font text-sm absolute left-1/2 transform -translate-x-1/2">
+                <a href="#home" class="text-white hover:text-red-600 font-semibold transition">HOME</a>
+                <a href="#about" class="text-white hover:text-red-600 font-semibold transition">ABOUT US</a>
+                <a href="services.html" class="text-white hover:text-red-600 font-semibold transition">SERVICES</a>
+                <a href="#packages" class="text-white hover:text-red-600 font-semibold transition">PACKAGES</a>
+                <a href="#portfolio" class="text-white hover:text-red-600 font-semibold transition">PORTFOLIO</a>
+                <a href="#contact" class="text-white hover:text-red-600 font-semibold transition">CONTACT</a>
+            </div>
+            
+            <!-- Right Section: Book Now Button + Mobile Menu -->
+            <div class="flex items-center gap-3">
+                <!-- Book Now Button - Always Visible -->
+                <a href="https://wa.me/919074997502" 
+                   target="_blank" 
+                   class="book-now-nav bg-red-600 text-white px-5 py-2.5 rounded-md font-bold logo-font text-sm hover:bg-red-700 transition glow-red whitespace-nowrap">
                     BOOK NOW
                 </a>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn md:hidden w-10 h-10 flex items-center justify-center text-white text-2xl border border-gray-800 rounded-lg hover:bg-gray-900 transition">
+                    ☰
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay hidden md:hidden">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <a href="#home" class="block py-3 text-white hover:text-red-600 font-semibold border-b border-gray-800">HOME</a>
+            <a href="#about" class="block py-3 text-white hover:text-red-600 font-semibold border-b border-gray-800">ABOUT US</a>
+            <a href="services.html" class="block py-3 text-white hover:text-red-600 font-semibold border-b border-gray-800">SERVICES</a>
+            <a href="#packages" class="block py-3 text-white hover:text-red-600 font-semibold border-b border-gray-800">PACKAGES</a>
+            <a href="#portfolio" class="block py-3 text-white hover:text-red-600 font-semibold border-b border-gray-800">PORTFOLIO</a>
+            <a href="#contact" class="block py-3 text-white hover:text-red-600 font-semibold">CONTACT</a>
+        </div>
+    </div>
+</nav>
 
    <!-- Home/Landing Page -->
     <section id="home" class="relative h-screen flex items-center overflow-hidden">
@@ -1195,4 +1220,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
