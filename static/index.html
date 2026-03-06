@@ -118,53 +118,53 @@
 </a>
 <body class="bg-black text-white">
     <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <!-- Logo - Always Visible -->
-            <div class="nav-logo">
-                <img src="assets/avlogo.jpeg" alt="AUTO VIBE Car Detailing Logo" loading="lazy">
-                <div class="logo-text">
-                    <div class="logo-font logo-main">AUTO <span>VIBE</span></div>
-                    <div class="logo-tagline">THE DETAILING EXPERTS</div>
-                </div>
-            </div>
-
-            <!-- Desktop Navigation - Hidden on Mobile -->
-            <div class="nav-links desktop-nav">
-                <a href="#home">HOME</a>
-                <a href="#about">ABOUT US</a>
-                <a href="services.html">SERVICES</a>
-                <a href="#packages">PACKAGES</a>
-                <a href="#portfolio">PORTFOLIO</a>
-                <a href="#contact">CONTACT</a>
-            </div>
-
-            <!-- Desktop Book Now Button - Hidden on Mobile -->
-            <a href="https://wa.me/919074997502" target="_blank" class="desktop-book-btn">
-                BOOK NOW
-            </a>
-
-            <!-- Mobile Menu Button - Only on Mobile -->
-            <button class="mobile-menu-toggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-
-        <!-- Mobile Menu Overlay - Only appears when toggled -->
-        <div class="mobile-menu-overlay">
-            <div class="mobile-menu-content">
-                <a href="#home">HOME</a>
-                <a href="#about">ABOUT US</a>
-                <a href="services.html">SERVICES</a>
-                <a href="#packages">PACKAGES</a>
-                <a href="#portfolio">PORTFOLIO</a>
-                <a href="#contact">CONTACT</a>
-                <a href="https://wa.me/919074997502" target="_blank" class="mobile-book-btn">BOOK NOW</a>
+<nav class="main-nav">
+    <div class="nav-container">
+        <!-- Logo - Always Visible -->
+        <div class="nav-logo">
+            <img src="assets/avlogo.jpeg" alt="AUTO VIBE Car Detailing Logo" loading="lazy">
+            <div class="logo-text">
+                <div class="logo-font logo-main">AUTO <span>VIBE</span></div>
+                <div class="logo-tagline">THE DETAILING EXPERTS</div>
             </div>
         </div>
-    </nav>
+
+        <!-- Desktop Navigation - Hidden on Mobile -->
+        <div class="desktop-nav">
+            <a href="index.html">HOME</a>
+            <a href="index.html#about">ABOUT US</a>
+            <a href="services.html">SERVICES</a>
+            <a href="index.html#packages">PACKAGES</a>
+            <a href="index.html#portfolio">PORTFOLIO</a>
+            <a href="index.html#contact">CONTACT</a>
+        </div>
+
+        <!-- Desktop Book Now Button - Hidden on Mobile -->
+        <a href="https://wa.me/919074997502" target="_blank" class="desktop-book-btn">
+            BOOK NOW
+        </a>
+
+        <!-- Mobile Menu Toggle Button - Visible only on mobile -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <a href="index.html">HOME</a>
+            <a href="index.html#about">ABOUT US</a>
+            <a href="services.html">SERVICES</a>
+            <a href="index.html#packages">PACKAGES</a>
+            <a href="index.html#portfolio">PORTFOLIO</a>
+            <a href="index.html#contact">CONTACT</a>
+            <a href="https://wa.me/919074997502" target="_blank" class="mobile-book-btn">BOOK NOW</a>
+        </div>
+    </div>
+</nav>
 
    <!-- Home/Landing Page -->
     <section id="home" class="hero-section">
@@ -1001,3 +1001,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
