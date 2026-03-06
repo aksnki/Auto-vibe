@@ -14,59 +14,90 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormHandling();
 });
 
-/**
- * Mobile Menu Toggle - CRITICAL FIX
- * Only shows on mobile, only logo visible initially
- */
-function initMobileMenu() {
+// Mobile Menu Toggle - FIXED VERSION
+document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const mobileOverlay = document.querySelector('.mobile-menu-overlay');
     
-    if (!menuToggle || !mobileOverlay) return;
-    
-    menuToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
+    if (menuToggle && mobileOverlay) {
+        console.log('Mobile menu initialized'); // Debug log
         
-        // Toggle active classes
-        this.classList.toggle('active');
-        mobileOverlay.classList.toggle('active');
-        
-        // Prevent body scroll when menu is open
-        if (mobileOverlay.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    });
-    
-    // Close menu when clicking on a link
-    const mobileLinks = mobileOverlay.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            menuToggle.classList.remove('active');
-            mobileOverlay.classList.remove('active');
-            document.body.style.overflow = '';
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle active classes
+            this.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            
+            // Toggle menu icon between ☰ and ✕
+            const spans = this.querySelectorAll('span');
+            if (this.classList.contains('active')) {
+                // Menu is open
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                spans[0].style.transform = 'translateY(9px) rotate(45deg)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'translateY(-9px) rotate(-45deg)';
+            } else {
+                // Menu is closed
+                document.body.style.overflow = '';
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+            
+            console.log('Menu toggled:', mobileOverlay.classList.contains('active')); // Debug log
         });
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!menuToggle.contains(e.target) && !mobileOverlay.contains(e.target)) {
-            menuToggle.classList.remove('active');
-            mobileOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-    
-    // Close menu on window resize (if going to desktop)
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            menuToggle.classList.remove('active');
-            mobileOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-}
+        
+        // Close menu when clicking on a link
+        const mobileLinks = mobileOverlay.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                // Reset toggle icon
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!menuToggle.contains(e.target) && !mobileOverlay.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                // Reset toggle icon
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
+        // Close menu on window resize (if going to desktop)
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                menuToggle.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                // Reset toggle icon
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+    } else {
+        console.error('Mobile menu elements not found!'); // Debug error
+    }
+});
 
 /**
  * Smooth Scrolling for Anchor Links
