@@ -20,36 +20,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileOverlay = document.querySelector('.mobile-menu-overlay');
     
     if (menuToggle && mobileOverlay) {
-        console.log('Mobile menu initialized'); // Debug log
+        console.log('Mobile menu initialized');
         
         menuToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
-            // Toggle active classes
             this.classList.toggle('active');
             mobileOverlay.classList.toggle('active');
             
-            // Toggle menu icon between ☰ and ✕
             const spans = this.querySelectorAll('span');
             if (this.classList.contains('active')) {
-                // Menu is open
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                document.body.style.overflow = 'hidden';
                 spans[0].style.transform = 'translateY(9px) rotate(45deg)';
                 spans[1].style.opacity = '0';
                 spans[2].style.transform = 'translateY(-9px) rotate(-45deg)';
             } else {
-                // Menu is closed
                 document.body.style.overflow = '';
                 spans[0].style.transform = 'none';
                 spans[1].style.opacity = '1';
                 spans[2].style.transform = 'none';
             }
-            
-            console.log('Menu toggled:', mobileOverlay.classList.contains('active')); // Debug log
         });
         
-        // Close menu when clicking on a link
         const mobileLinks = mobileOverlay.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
@@ -57,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 mobileOverlay.classList.remove('active');
                 document.body.style.overflow = '';
                 
-                // Reset toggle icon
                 const spans = menuToggle.querySelectorAll('span');
                 spans[0].style.transform = 'none';
                 spans[1].style.opacity = '1';
@@ -65,14 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             if (!menuToggle.contains(e.target) && !mobileOverlay.contains(e.target)) {
                 menuToggle.classList.remove('active');
                 mobileOverlay.classList.remove('active');
                 document.body.style.overflow = '';
                 
-                // Reset toggle icon
                 const spans = menuToggle.querySelectorAll('span');
                 spans[0].style.transform = 'none';
                 spans[1].style.opacity = '1';
@@ -80,14 +70,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Close menu on window resize (if going to desktop)
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 menuToggle.classList.remove('active');
                 mobileOverlay.classList.remove('active');
                 document.body.style.overflow = '';
                 
-                // Reset toggle icon
                 const spans = menuToggle.querySelectorAll('span');
                 spans[0].style.transform = 'none';
                 spans[1].style.opacity = '1';
@@ -95,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     } else {
-        console.error('Mobile menu elements not found!'); // Debug error
+        console.error('Mobile menu elements not found!');
     }
 });
 
@@ -107,14 +95,12 @@ function initSmoothScroll() {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             
-            // Skip if it's just "#" or empty
             if (href === '#' || !href) return;
             
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
                 
-                // Account for fixed header
                 const headerOffset = window.innerWidth > 768 ? 90 : 70;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -141,7 +127,6 @@ function initScrollAnimations() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in');
                 
-                // If it's a counter, start animation
                 if (entry.target.classList.contains('stat-card')) {
                     const counter = entry.target.querySelector('.counter, .stat-number');
                     if (counter && counter.dataset.count) {
@@ -165,10 +150,8 @@ function initCounterAnimation() {
     const counters = document.querySelectorAll('.counter, .stat-number[data-count]');
     
     counters.forEach(counter => {
-        // Only animate if not already animated and has data-count
         if (counter.dataset.count && !counter.classList.contains('animated')) {
             
-            // Check if element is in viewport
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -192,15 +175,12 @@ function animateCounter(counter) {
     
     counter.classList.add('animated');
     
-    // Get current value (remove any non-numeric characters)
     let current = parseInt(counter.innerText.replace(/[^0-9]/g, '')) || 0;
     
-    // Don't animate if already at or above target
     if (current >= target) return;
     
-    const increment = Math.ceil(target / 50); // Smooth animation over ~50 steps
-    const duration = 2000; // 2 seconds
-    const stepTime = duration / 50;
+    const increment = Math.ceil(target / 50);
+    const stepTime = 2000 / 50;
     
     const timer = setInterval(() => {
         current += increment;
@@ -222,13 +202,10 @@ function initWhyCards() {
     
     whyCards.forEach(card => {
         card.addEventListener('click', function(e) {
-            // Don't toggle if clicking on a link
             if (e.target.tagName === 'A') return;
             
-            // Toggle active class
             this.classList.toggle('active');
             
-            // Find front and back elements
             const front = this.querySelector('.card-front');
             const back = this.querySelector('.card-back');
             
@@ -237,7 +214,6 @@ function initWhyCards() {
                 back.classList.toggle('hidden');
             }
             
-            // Close other cards (optional - comment out if you want multiple open)
             whyCards.forEach(otherCard => {
                 if (otherCard !== card && otherCard.classList.contains('active')) {
                     otherCard.classList.remove('active');
@@ -252,7 +228,6 @@ function initWhyCards() {
                 }
             });
             
-            // Scroll to show full card if needed (on mobile)
             if (window.innerWidth <= 768 && this.classList.contains('active')) {
                 setTimeout(() => {
                     this.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -260,7 +235,6 @@ function initWhyCards() {
             }
         });
         
-        // Add keyboard support
         card.addEventListener('keypress', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -268,7 +242,6 @@ function initWhyCards() {
             }
         });
         
-        // Make cards focusable
         card.setAttribute('tabindex', '0');
         card.setAttribute('role', 'button');
         card.setAttribute('aria-label', 'Click to reveal more information');
@@ -276,44 +249,46 @@ function initWhyCards() {
 }
 
 /**
- * FAQ Accordion Functionality
+ * FAQ Accordion Functionality - FIXED VERSION
  */
 function initFAQ() {
     const faqQuestions = document.querySelectorAll('.faq-question');
     
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
-            const answer = this.nextElementSibling;
+    if (faqQuestions.length === 0) {
+        console.log('No FAQ questions found');
+        return;
+    }
+    
+    console.log(`Found ${faqQuestions.length} FAQ items`);
+    
+    faqQuestions.forEach((question, index) => {
+        // Remove any existing event listeners by cloning and replacing
+        const newQuestion = question.cloneNode(true);
+        question.parentNode.replaceChild(newQuestion, question);
+        
+        newQuestion.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Find the parent faq-card
+            const faqCard = this.closest('.faq-card');
+            if (!faqCard) return;
+            
+            // Find the answer within the same faq-card
+            const answer = faqCard.querySelector('.faq-answer');
             const arrow = this.querySelector('.faq-arrow');
+            
+            if (!answer) return;
             
             // Toggle current FAQ
             this.classList.toggle('active');
+            answer.classList.toggle('hidden');
             
-            if (answer) {
-                answer.classList.toggle('hidden');
-            }
-            
+            // Rotate arrow
             if (arrow) {
                 arrow.style.transform = this.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
             }
             
-            // Optional: Close other FAQs
-            faqQuestions.forEach(otherQuestion => {
-                if (otherQuestion !== this && otherQuestion.classList.contains('active')) {
-                    otherQuestion.classList.remove('active');
-                    
-                    const otherAnswer = otherQuestion.nextElementSibling;
-                    const otherArrow = otherQuestion.querySelector('.faq-arrow');
-                    
-                    if (otherAnswer) {
-                        otherAnswer.classList.add('hidden');
-                    }
-                    
-                    if (otherArrow) {
-                        otherArrow.style.transform = 'rotate(0)';
-                    }
-                }
-            });
+            console.log(`FAQ ${index + 1} toggled:`, this.classList.contains('active'));
         });
     });
 }
@@ -328,14 +303,12 @@ function initVideoFallback() {
         video.addEventListener('error', function() {
             console.log('Video failed to load - using fallback');
             
-            // Add fallback background color
             const heroSection = document.querySelector('.hero-section');
             if (heroSection) {
                 heroSection.style.background = 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)';
             }
         });
         
-        // Ensure video plays
         video.play().catch(error => {
             console.log('Video autoplay failed:', error);
         });
@@ -379,26 +352,22 @@ function initActiveNavHighlight() {
  * Form Handling (if any forms exist)
  */
 function initFormHandling() {
-    // Handle any contact forms if they exist
     const forms = document.querySelectorAll('form');
     
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Show loading state
             const submitBtn = this.querySelector('button[type="submit"]');
             if (submitBtn) {
                 const originalText = submitBtn.innerText;
                 submitBtn.innerText = 'Sending...';
                 submitBtn.disabled = true;
                 
-                // Simulate form submission (replace with actual AJAX)
                 setTimeout(() => {
                     submitBtn.innerText = 'Sent!';
                     submitBtn.style.background = '#10b981';
                     
-                    // Reset after 3 seconds
                     setTimeout(() => {
                         submitBtn.innerText = originalText;
                         submitBtn.style.background = '';
@@ -431,7 +400,6 @@ function throttle(func, limit) {
  * Handle Window Resize
  */
 window.addEventListener('resize', throttle(function() {
-    // Adjust any responsive elements
     const mobileMenu = document.querySelector('.mobile-menu-overlay');
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     
@@ -470,10 +438,8 @@ document.addEventListener('DOMContentLoaded', function() {
  * Performance Optimization: Preload critical resources
  */
 window.addEventListener('load', function() {
-    // Preload next page resources
     const preloadLinks = document.querySelectorAll('link[rel="preload"]');
     
-    // Remove any loading spinners if they exist
     const loaders = document.querySelectorAll('.loader');
     loaders.forEach(loader => loader.remove());
 });
@@ -492,10 +458,8 @@ window.addEventListener('error', function(e) {
  */
 window.addEventListener('online', function() {
     console.log('Connection restored');
-    // Refresh any dynamic content if needed
 });
 
 window.addEventListener('offline', function() {
     console.log('Connection lost');
-    // Show offline notification if needed
 });
