@@ -2638,3 +2638,45 @@ textarea {
         font-size: 1rem;
     }
 }
+
+/* ===== SWIPER PAGINATION DOTS SIZE REDUCTION ===== */
+
+/* Target the swiper pagination container */
+.swiper-pagination {
+    position: relative !important;
+    bottom: 0 !important;
+    margin-top: 1rem !important;
+}
+
+/* Make the dots smaller */
+.swiper-pagination-bullet {
+    width: 4px !important;
+    height: 4px !important;
+    background: var(--text-secondary) !important;
+    opacity: 0.5 !important;
+    margin: 0 4px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Active dot styling */
+.swiper-pagination-bullet-active {
+    background: var(--primary) !important;
+    opacity: 1 !important;
+    width: 10px !important; /* Slightly wider for active state */
+    border-radius: 4px !important;
+}
+
+/* Even smaller on mobile */
+@media (max-width: 768px) {
+    .swiper-pagination-bullet {
+        width: 4px !important;
+        height: 4px !important;
+        margin: 0 3px !important;
+    }
+    
+    .swiper-pagination-bullet-active {
+        width: 16px !important;
+    }
+}
+
+
