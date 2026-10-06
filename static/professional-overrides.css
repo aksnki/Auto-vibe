@@ -537,3 +537,722 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible { outline:2px soli
         transition: none !important;
     }
 }
+
+/* =========================================================
+   AUTO VIBE — PREMIUM MOBILE OPTIMIZATION
+   Packages + Hero Video + Mobile Navigation
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* -----------------------------------------------------
+       1. GLOBAL MOBILE SPACING
+       ----------------------------------------------------- */
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body {
+        -webkit-text-size-adjust: 100%;
+    }
+
+
+    /* -----------------------------------------------------
+       2. MOBILE HEADER / NAVIGATION
+       ----------------------------------------------------- */
+
+    header,
+    .site-header,
+    .main-header,
+    .navbar {
+        width: 100%;
+        max-width: 100%;
+        z-index: 9999;
+    }
+
+    /* Header inner spacing */
+    header .container,
+    .site-header .container,
+    .navbar .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /*
+       Premium mobile header
+       Keeps logo from touching hamburger
+    */
+    .mobile-header,
+    .mobile-nav-header {
+        min-height: 76px;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        background:
+            linear-gradient(
+                180deg,
+                rgba(5, 5, 5, .98),
+                rgba(10, 10, 10, .94)
+            );
+        border-bottom: 1px solid rgba(255, 255, 255, .08);
+        box-shadow:
+            0 8px 30px rgba(0, 0, 0, .55);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* Logo */
+    .logo,
+    .site-logo,
+    .brand-logo {
+        max-width: 190px;
+        width: auto;
+        height: auto;
+        flex-shrink: 1;
+    }
+
+
+    /* -----------------------------------------------------
+       3. PREMIUM HAMBURGER BUTTON
+       ----------------------------------------------------- */
+
+    .mobile-menu-toggle,
+    .menu-toggle,
+    .hamburger {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        border-radius: 14px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 6px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255, 255, 255, .08),
+                rgba(255, 255, 255, .025)
+            );
+
+        border: 1px solid rgba(255, 255, 255, .12);
+
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .08),
+            0 8px 25px rgba(0, 0, 0, .45);
+
+        cursor: pointer;
+
+        transition:
+            transform .25s ease,
+            border-color .25s ease,
+            background .25s ease,
+            box-shadow .25s ease;
+    }
+
+    .mobile-menu-toggle span,
+    .menu-toggle span,
+    .hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 999px;
+        background: #f7f7f7;
+
+        transition:
+            transform .3s ease,
+            opacity .25s ease,
+            width .25s ease;
+    }
+
+    .mobile-menu-toggle:hover,
+    .menu-toggle:hover,
+    .hamburger:hover {
+        border-color: rgba(229, 9, 20, .65);
+
+        box-shadow:
+            0 0 25px rgba(229, 9, 20, .18),
+            inset 0 1px 0 rgba(255, 255, 255, .08);
+    }
+
+
+    /* -----------------------------------------------------
+       4. MOBILE MENU / DRAWER
+       ----------------------------------------------------- */
+
+    .mobile-menu,
+    .mobile-nav,
+    .mobile-menu-overlay,
+    .nav-menu-mobile {
+        max-height: calc(100dvh - 76px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-menu-overlay,
+    .mobile-nav {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(5, 5, 5, .98),
+                rgba(12, 12, 12, .96)
+            );
+
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+
+        border-top: 1px solid rgba(229, 9, 20, .15);
+    }
+
+    .mobile-menu a,
+    .mobile-nav a,
+    .nav-menu-mobile a {
+        display: flex;
+        align-items: center;
+
+        min-height: 52px;
+        padding: 0 20px;
+
+        color: #f7f7f7;
+
+        border-bottom: 1px solid rgba(255, 255, 255, .055);
+
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+
+        transition:
+            color .2s ease,
+            background .2s ease,
+            padding-left .2s ease;
+    }
+
+    .mobile-menu a:hover,
+    .mobile-nav a:hover,
+    .nav-menu-mobile a:hover {
+        color: #ff3038;
+        background: rgba(229, 9, 20, .07);
+        padding-left: 26px;
+    }
+
+
+    /* -----------------------------------------------------
+       5. HOME HERO / LAND ROVER VIDEO
+       ----------------------------------------------------- */
+
+    .hero,
+    .hero-section,
+    .landing-hero,
+    .home-hero {
+        position: relative;
+
+        width: 100%;
+        height: 78svh;
+        min-height: 560px;
+        max-height: 760px;
+
+        overflow: hidden;
+    }
+
+    /* Hero video */
+    .hero video,
+    .hero-section video,
+    .landing-hero video,
+    .home-hero video,
+    .hero-video,
+    .landing-video {
+
+        position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        min-width: 100%;
+        min-height: 100%;
+
+        object-fit: cover;
+
+        /*
+         * Keeps the vehicle visible while
+         * avoiding excessive vertical cropping.
+         */
+        object-position: 58% center;
+
+        transform: scale(1.01);
+    }
+
+    /*
+       Dark premium overlay.
+       Keeps text readable without making
+       the vehicle disappear.
+    */
+    .hero::after,
+    .hero-section::after,
+    .landing-hero::after,
+    .home-hero::after {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        pointer-events: none;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0, 0, 0, .28) 0%,
+                rgba(0, 0, 0, .08) 35%,
+                rgba(0, 0, 0, .55) 72%,
+                rgba(0, 0, 0, .92) 100%
+            );
+    }
+
+    /*
+       Hero content
+    */
+    .hero-content,
+    .hero-inner,
+    .landing-hero-content,
+    .home-hero-content {
+        position: relative;
+        z-index: 3;
+
+        width: 100%;
+        max-width: 100%;
+
+        padding:
+            0 20px
+            90px 20px 36px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .hero h1,
+    .hero-section h1,
+    .landing-hero h1,
+    .home-hero h1 {
+        font-size: clamp(42px, 11vw, 62px);
+        line-height: .95;
+        margin-bottom: 16px;
+    }
+
+    .hero p,
+    .hero-section p,
+    .landing-hero p,
+    .home-hero p {
+        font-size: 15px;
+        line-height: 1.5;
+        max-width: 340px;
+    }
+
+    /*
+       Hero CTA
+    */
+    .hero .btn,
+    .hero-section .btn,
+    .landing-hero .btn,
+    .home-hero .btn,
+    .hero .cta-button,
+    .hero-section .cta-button {
+        width: 100%;
+        max-width: 390px;
+        min-height: 56px;
+
+        margin-top: 22px;
+
+        border-radius: 999px;
+    }
+
+
+    /* -----------------------------------------------------
+       6. PACKAGE / PRICING SECTION
+       ----------------------------------------------------- */
+
+    .packages-section,
+    .pricing-section,
+    #packages,
+    #pricing {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .packages-grid,
+    .pricing-grid,
+    .package-grid {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: minmax(0, 1fr);
+
+        gap: 22px;
+
+        padding:
+            0 16px
+            30px;
+    }
+
+
+    /* Package card */
+    .package-card,
+    .pricing-card {
+
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        margin: 0 auto;
+
+        padding: 28px 22px 24px;
+
+        border-radius: 24px;
+
+        box-sizing: border-box;
+
+        overflow: hidden;
+
+        transform: none !important;
+    }
+
+
+    /* Package title */
+    .package-card h3,
+    .pricing-card h3,
+    .package-title {
+
+        font-size: clamp(28px, 8vw, 38px);
+
+        line-height: 1;
+
+        text-align: center;
+
+        margin-bottom: 16px;
+    }
+
+
+    /* Package price */
+    .package-card .price,
+    .pricing-card .price,
+    .package-price {
+
+        font-size: clamp(42px, 12vw, 58px);
+
+        line-height: 1;
+
+        text-align: center;
+
+        white-space: nowrap;
+
+        margin: 8px 0 18px;
+    }
+
+
+    /* Package subtitle */
+    .package-card .subtitle,
+    .pricing-card .subtitle,
+    .package-description {
+
+        font-size: 15px;
+
+        line-height: 1.55;
+
+        text-align: center;
+
+        max-width: 260px;
+
+        margin:
+            0 auto 28px;
+    }
+
+
+    /* -----------------------------------------------------
+       7. PACKAGE FEATURES
+       ----------------------------------------------------- */
+
+    .package-card ul,
+    .pricing-card ul,
+    .package-features {
+
+        width: 100%;
+
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+    }
+
+    .package-card li,
+    .pricing-card li,
+    .package-features li {
+
+        display: grid;
+
+        grid-template-columns:
+            26px
+            minmax(0, 1fr);
+
+        align-items: start;
+
+        column-gap: 8px;
+
+        width: 100%;
+
+        padding: 11px 0;
+
+        font-size: 15px;
+
+        line-height: 1.45;
+
+        text-align: left;
+    }
+
+    /*
+       Keep the red check and the grey check
+       aligned correctly.
+    */
+    .package-card li::before,
+    .pricing-card li::before {
+        width: 26px;
+        min-width: 26px;
+    }
+
+
+    /* -----------------------------------------------------
+       8. PACKAGE DURATION
+       ----------------------------------------------------- */
+
+    .package-card .duration,
+    .pricing-card .duration {
+
+        margin-top: 24px;
+
+        text-align: center;
+
+        font-size: 14px;
+
+        letter-spacing: .04em;
+    }
+
+
+    /* -----------------------------------------------------
+       9. PACKAGE BUTTON
+       ----------------------------------------------------- */
+
+    .package-card .btn,
+    .pricing-card .btn,
+    .package-card .package-button,
+    .pricing-card .package-button {
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        max-width: 290px;
+
+        min-height: 54px;
+
+        margin:
+            24px auto 0;
+
+        padding:
+            13px 20px;
+
+        border-radius: 999px;
+
+        font-size: 15px;
+
+        text-align: center;
+
+        box-sizing: border-box;
+    }
+
+
+    /* -----------------------------------------------------
+       10. PREVENT DESKTOP 3D PACKAGE EFFECTS ON MOBILE
+       ----------------------------------------------------- */
+
+    .packages-grid .package-card:hover,
+    .pricing-grid .pricing-card:hover,
+    .package-grid .package-card:hover {
+
+        transform: translateY(-4px) !important;
+
+        scale: 1 !important;
+    }
+
+
+    /* -----------------------------------------------------
+       11. SECTION HEADING
+       ----------------------------------------------------- */
+
+    .packages-section .section-title,
+    .pricing-section .section-title,
+    #packages .section-title,
+    #pricing .section-title {
+
+        padding-left: 18px;
+        padding-right: 18px;
+
+        font-size: clamp(30px, 8vw, 42px);
+
+        line-height: 1.05;
+    }
+
+    .packages-section .section-subtitle,
+    .pricing-section .section-subtitle,
+    #packages .section-subtitle,
+    #pricing .section-subtitle {
+
+        padding:
+            0 20px;
+
+        font-size: 14px;
+
+        line-height: 1.5;
+    }
+
+
+    /* -----------------------------------------------------
+       12. FLOATING WHATSAPP
+       ----------------------------------------------------- */
+
+    .whatsapp-float {
+
+        width: 58px !important;
+        height: 58px !important;
+
+        right: 18px !important;
+        bottom: 18px !important;
+
+        z-index: 9998;
+
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, .45),
+            0 0 22px rgba(37, 211, 102, .18);
+    }
+
+    .whatsapp-float svg {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+
+    /* -----------------------------------------------------
+       13. REMOVE HORIZONTAL OVERFLOW FROM SECTIONS
+       ----------------------------------------------------- */
+
+    section,
+    main,
+    footer {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+    .mobile-header,
+    .mobile-nav-header {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .logo,
+    .site-logo,
+    .brand-logo {
+        max-width: 165px;
+    }
+
+    .mobile-menu-toggle,
+    .menu-toggle,
+    .hamburger {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+    }
+
+    .hero,
+    .hero-section,
+    .landing-hero,
+    .home-hero {
+        height: 74svh;
+        min-height: 520px;
+    }
+
+    .hero-content,
+    .hero-inner,
+    .landing-hero-content,
+    .home-hero-content {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .packages-grid,
+    .pricing-grid,
+    .package-grid {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .package-card,
+    .pricing-card {
+        padding-left: 18px;
+        padding-right: 18px;
+        border-radius: 20px;
+    }
+
+    .package-card li,
+    .pricing-card li,
+    .package-features li {
+        font-size: 14px;
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .hero,
+    .hero-section,
+    .landing-hero,
+    .home-hero {
+        height: 100svh;
+        min-height: 430px;
+    }
+
+    .hero-content,
+    .hero-inner,
+    .landing-hero-content,
+    .home-hero-content {
+        padding-bottom: 28px;
+    }
+
+}
